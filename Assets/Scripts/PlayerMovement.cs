@@ -12,23 +12,29 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _playerInputReader.MoveEvent += HandleMOve;
+        _playerInputReader.MoveEvent += HandleMove;
     }
 
     //private void HandleMOve(Vector2 direction)
-    private void HandleMOve(Vector2 direction)
+    private void HandleMove(Vector2 direction)
     {
-        //_moveDirection = direction;
-
-        transform.position += new Vector3(direction.x, direction.y) * _speed; //Time.deltaTime;
+        _moveDirection = direction;
 
         //Debug.Log("En X: "+ direction.x);
         //Debug.Log("En Y: "+ direction.y);
+
+        Move();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //HandleMOve();
+        
+    }
+
+    private void Move()
+    {
+        transform.position += new Vector3(_moveDirection.x, _moveDirection.y) * _speed;
+        //transform.position += new Vector3(_moveDirection.x, _moveDirection.y) * (_speed * Time.deltaTime);
     }
 }

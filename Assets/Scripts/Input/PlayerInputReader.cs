@@ -20,6 +20,7 @@ public class PlayerInputReader : ScriptableObject, GameInput.IGameplayActions
         {
             _gameInput = new GameInput();
 
+            //Add callbacks for inputs (started, perfomed, canceled)
             _gameInput.Gameplay.SetCallbacks(this);
 
             SetGameInput();
@@ -31,26 +32,24 @@ public class PlayerInputReader : ScriptableObject, GameInput.IGameplayActions
         _gameInput.Gameplay.Enable();
 
         //Set Movement whitout InputAction.started
-        _gameInput.Gameplay.Move.performed += ReadInputForMovement;
-        _gameInput.Gameplay.Move.canceled += ReadInputForMovement;
+        //_gameInput.Gameplay.Move.performed += ReadInputForMovement;
+        //_gameInput.Gameplay.Move.canceled += ReadInputForMovement;
 
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        //Debug.Log("Phase: " + context.phase + ", Value: " + context.ReadValue<Vector2>());
-        //MoveEvent?.Invoke(context.ReadValue<Vector2>());
+        Debug.Log("Phase: " + context.phase + ", Value: " + context.ReadValue<Vector2>());
+        MoveEvent?.Invoke(context.ReadValue<Vector2>());
         //MoveEvent?.Invoke(_direction);
-
-        //Vector2 vector = ReadInputForMovement();
     }
 
-    private void ReadInputForMovement(InputAction.CallbackContext context) 
-    {
-        //_direction = context.ReadValue<Vector2>();
-        _direction = context.ReadValue<Vector2>();
+    //private void ReadInputForMovement(InputAction.CallbackContext context) 
+    //{
+    //    //_direction = context.ReadValue<Vector2>();
+    //    _direction = context.ReadValue<Vector2>();
 
-        MoveEvent?.Invoke(_direction);
-        //return _direction;
-    }
+    //    MoveEvent?.Invoke(_direction);
+    //    //return _direction;
+    //}
 }

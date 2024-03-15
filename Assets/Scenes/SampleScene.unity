@@ -305,4 +305,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInputReader: {fileID: 11400000, guid: a2c7c7efc0829904cb41260ce2b46e4f, type: 2}
-  _speed: 1
+  _speed: 10
