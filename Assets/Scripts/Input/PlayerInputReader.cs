@@ -39,7 +39,7 @@ public class PlayerInputReader : ScriptableObject, GameInput.IGameplayActions
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log("Phase: " + context.phase + ", Value: " + context.ReadValue<Vector2>());
+        //Debug.Log("Phase: " + context.phase + ", Value: " + context.ReadValue<Vector2>());
         MoveEvent?.Invoke(context.ReadValue<Vector2>());
         //MoveEvent?.Invoke(_direction);
     }
